@@ -86,7 +86,6 @@ for (let i = 0; i < arrayOfDicees2.length; i++) {
   }
 }
 let img = document.getElementsByTagName("img");
-console.log(img);
 
 if (randomNumber1 > randomNumber2) {
   let h1 = document.getElementsByTagName("h1")[0];
