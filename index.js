@@ -99,7 +99,7 @@ if (randomNumber1 < randomNumber2) {
 }
 if (randomNumber1 === randomNumber2) {
   let h1 = document.getElementsByTagName("h1")[0];
-  h1.innerHTML = `Tie`;
+  h1.innerHTML = `Tie!`;
   img[0].classList.toggle("vision");
   img[1].classList.toggle("vision");
 }
