@@ -71,3 +71,7 @@ h1 {
   border-radius: 50%;
   background-color: rgb(243, 250, 196);
 }
+.btn {
+  width: 100px;
+  height: 30px;
+}

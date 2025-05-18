@@ -55,51 +55,66 @@ let arrayOfBlocks2 = [
   block18,
 ];
 
-let randomNumber1 = randomPick();
-let randomNumber2 = randomPick();
+let btn = document.getElementsByClassName("btn")[0];
+console.log(btn);
+btn.onclick = function (e) {
+  for (const block of arrayOfBlocks1) {
+    block.classList.remove("dot");
+  }
 
-for (let i = 0; i < arrayOfDicees1.length; i++) {
-  if (randomNumber1 == i + 1) {
-    let pickedDicee = arrayOfDicees1[i];
+  for (const block of arrayOfBlocks2) {
+    block.classList.remove("dot");
+  }
 
-    for (const element of pickedDicee) {
-      for (const block of arrayOfBlocks1) {
-        if (element == block.id) {
-          block.classList.add("dot");
+  let randomNumber1 = randomPick();
+  let randomNumber2 = randomPick();
+
+  for (let i = 0; i < arrayOfDicees1.length; i++) {
+    if (randomNumber1 == i + 1) {
+      let pickedDicee = arrayOfDicees1[i];
+
+      for (const element of pickedDicee) {
+        for (const block of arrayOfBlocks1) {
+          if (element == block.id) {
+            block.classList.add("dot");
+          }
         }
       }
     }
   }
-}
 
-for (let i = 0; i < arrayOfDicees2.length; i++) {
-  if (randomNumber2 == i + 1) {
-    let pickedDicee = arrayOfDicees2[i];
+  for (let i = 0; i < arrayOfDicees2.length; i++) {
+    if (randomNumber2 == i + 1) {
+      let pickedDicee = arrayOfDicees2[i];
 
-    for (const element of pickedDicee) {
-      for (const block of arrayOfBlocks2) {
-        if (element == Number(block.id - 9)) {
-          block.classList.add("dot");
+      for (const element of pickedDicee) {
+        for (const block of arrayOfBlocks2) {
+          if (element == Number(block.id - 9)) {
+            block.classList.add("dot");
+          }
         }
       }
     }
   }
-}
-let img = document.getElementsByTagName("img");
 
-if (randomNumber1 > randomNumber2) {
-  let h1 = document.getElementsByTagName("h1")[0];
-  h1.innerHTML = `Player 1 Wins!`;
-  img[0].classList.toggle("vision");
-}
-if (randomNumber1 < randomNumber2) {
-  let h1 = document.getElementsByTagName("h1")[0];
-  h1.innerHTML = `Player 2 Wins!`;
-  img[1].classList.toggle("vision");
-}
-if (randomNumber1 === randomNumber2) {
-  let h1 = document.getElementsByTagName("h1")[0];
-  h1.innerHTML = `Tie!`;
-  img[0].classList.toggle("vision");
-  img[1].classList.toggle("vision");
-}
+  let img = document.getElementsByTagName("img");
+
+  if (randomNumber1 > randomNumber2) {
+    let h1 = document.getElementsByTagName("h1")[0];
+    h1.innerHTML = `Player 1 Wins!`;
+    img[0].classList.toggle("vision");
+  }
+
+  if (randomNumber1 < randomNumber2) {
+    let h1 = document.getElementsByTagName("h1")[0];
+    h1.innerHTML = `Player 2 Wins!`;
+    img[1].classList.toggle("vision");
+  }
+
+  if (randomNumber1 === randomNumber2) {
+    let h1 = document.getElementsByTagName("h1")[0];
+    h1.innerHTML = `Tie!`;
+    img[0].classList.toggle("vision");
+    img[1].classList.toggle("vision");
+  }
+};
