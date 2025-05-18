@@ -55,9 +55,47 @@ let arrayOfBlocks2 = [
   block18,
 ];
 
+let h1 = document.getElementsByTagName("h1")[0];
+h1.innerHTML = `Dicee Game`;
+
 let btn = document.getElementsByClassName("btn")[0];
-console.log(btn);
+
+let inputs = document.getElementsByTagName("input");
+let namesOfPlayers = document.getElementsByTagName("p");
+
 btn.onclick = function (e) {
+  let randomNumber1 = randomPick();
+  let randomNumber2 = randomPick();
+
+  let img = document.getElementsByTagName("img");
+  img[0].classList.remove("vision");
+  img[1].classList.remove("vision");
+
+  if (randomNumber1 > randomNumber2) {
+    let h1 = document.getElementsByTagName("h1")[0];
+    h1.innerHTML = `Player 1 Wins!`;
+    img[0].classList.add("vision");
+  }
+
+  if (randomNumber1 < randomNumber2) {
+    let h1 = document.getElementsByTagName("h1")[0];
+    h1.innerHTML = `Player 2 Wins!`;
+    img[1].classList.add("vision");
+  }
+
+  if (randomNumber1 === randomNumber2) {
+    let h1 = document.getElementsByTagName("h1")[0];
+    h1.innerHTML = `Tie!`;
+    img[0].classList.add("vision");
+    img[1].classList.add("vision");
+  }
+
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i].value;
+    namesOfPlayers[i].innerText = input;
+    inputs[i].classList.add("inputVision");
+  }
+
   for (const block of arrayOfBlocks1) {
     block.classList.remove("dot");
   }
@@ -65,9 +103,6 @@ btn.onclick = function (e) {
   for (const block of arrayOfBlocks2) {
     block.classList.remove("dot");
   }
-
-  let randomNumber1 = randomPick();
-  let randomNumber2 = randomPick();
 
   for (let i = 0; i < arrayOfDicees1.length; i++) {
     if (randomNumber1 == i + 1) {
@@ -97,24 +132,5 @@ btn.onclick = function (e) {
     }
   }
 
-  let img = document.getElementsByTagName("img");
-
-  if (randomNumber1 > randomNumber2) {
-    let h1 = document.getElementsByTagName("h1")[0];
-    h1.innerHTML = `Player 1 Wins!`;
-    img[0].classList.toggle("vision");
-  }
-
-  if (randomNumber1 < randomNumber2) {
-    let h1 = document.getElementsByTagName("h1")[0];
-    h1.innerHTML = `Player 2 Wins!`;
-    img[1].classList.toggle("vision");
-  }
-
-  if (randomNumber1 === randomNumber2) {
-    let h1 = document.getElementsByTagName("h1")[0];
-    h1.innerHTML = `Tie!`;
-    img[0].classList.toggle("vision");
-    img[1].classList.toggle("vision");
-  }
+  btn.innerText = "Reload";
 };
